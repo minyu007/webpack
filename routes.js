@@ -34,4 +34,8 @@ module.exports = function(router, app) {
     router.get('/handl-front/hello', proxy({
         url: 'http://192.168.1.17:8080/handl-front/hello'
     }));
+
+    router.get('/handl-front/j_spring_security_check', proxy({
+        url: 'http://192.168.1.17:8080/handl-front/j_spring_security_check'
+    }));
 };

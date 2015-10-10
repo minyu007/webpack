@@ -2,6 +2,7 @@
 
 
 require('commonCss');
+require('iconCss');
 
 require('jquery');
 

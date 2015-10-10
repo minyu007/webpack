@@ -1,7 +1,8 @@
 'use strict';
 
 require('commonCss');
-require('../css/b.css');
+require('iconCss');
+require('bCss');
 
 require('jquery');
 

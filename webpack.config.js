@@ -7,11 +7,11 @@ var fs = require('fs');
 var webpack = require('webpack');
 var _ = require('lodash');
 
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+var extractTextPlugin = require('extract-text-webpack-plugin');
+var htmlWebpackPlugin = require('html-webpack-plugin');
 
-var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
-var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+var commonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 
 var srcDir = path.resolve(process.cwd(), 'src');
 var build = 'build/';
@@ -20,7 +20,6 @@ var sourceMap = require('./src/sourcemap.json');
 var excludeFromStats = [
 	/node_modules[\\\/]/
 ];
-
 var generateEntries = function() {
 	var jsDir = path.resolve(srcDir, 'js');
 	var names = fs.readdirSync(jsDir);
@@ -33,6 +32,7 @@ var generateEntries = function() {
 
 		if (entry) map[entry] = entryPath;
 	});
+	console.log(map)
 	return map;
 }
 
@@ -56,7 +56,7 @@ var webpackConfig = function(options) {
 		resolve: {
 			root: [srcDir, './node_modules'],
 			alias: sourceMap,
-			extensions: ['', '.js', '.scss', '.css', '.png', '.jpg']
+			extensions: ['', '.js', '.jsx', '.css', '.png', '.jpg']
 		},
 
 		resolveLoader: {
@@ -84,17 +84,22 @@ var webpackConfig = function(options) {
 		},
 
 		plugins: [
-			new CommonsChunkPlugin({
+			new commonsChunkPlugin({
 				name: 'vendors',
 				chunks: chunks,
 				minChunks: chunks.length
 			}),
 			//page b 和 page c 公用的js将被打包位common－bc
-			new CommonsChunkPlugin({
+			new commonsChunkPlugin({
 				name: 'common-bc',
 				chunks: ['b', 'c'],
 				minChunks: 2
-			})
+			}),
+			new uglifyJsPlugin({
+	            compress: {
+	                warnings: false
+	            }
+	        })
 		],
 
 		devServer: {
@@ -121,17 +126,17 @@ var webpackConfig = function(options) {
 	} else {
 		var cssLoader = {
 			test: /\.css$/,
-			loader: ExtractTextPlugin.extract('style', 'css?minimize')
+			loader: extractTextPlugin.extract('style', 'css?minimize')
 		};
 		var sassLoader = {
 			test: /\.scss$/,
-			loader: ExtractTextPlugin.extract('style', 'css?minimize', 'sass')
+			loader: extractTextPlugin.extract('style', 'css?minimize', 'sass')
 		};
 
 		config.module.loaders.push(cssLoader);
 		config.module.loaders.push(sassLoader);
 		config.plugins.push(
-			new ExtractTextPlugin('css/[contenthash:8].[name].min.css', {
+			new extractTextPlugin('css/[contenthash:8].[name].min.css', {
 				allChunks: false
 			})
 		);
@@ -151,7 +156,7 @@ var webpackConfig = function(options) {
 					conf.inject = 'body';
 					conf.chunks = ['vendors', m[1]];
 				}
-				config.plugins.push(new HtmlWebpackPlugin(conf));
+				config.plugins.push(new htmlWebpackPlugin(conf));
 			}
 		});
 	}

@@ -1,4 +1,10 @@
 {
+	"aCss": "css/a.css",
+	"bCss": "css/b.css",
+    "commonCss": "css/common.css",
+    "iconCss": "css/sprites-icons.css",
 
-    "commonCss": "css/common.css"
+    "aJs": "js/a.js",
+    "bJs": "js/b.js",
+    "cJs": "js/c.js"
 }

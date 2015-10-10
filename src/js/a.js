@@ -1,9 +1,10 @@
 'use strict';
 
 require('commonCss');
-require('../css/a.css');
-var $ = require('jquery');
+require('iconCss');
+require('aCss');
 
+var $ = require('jquery');
 var _ = require('lodash');
 
 $.ajax({

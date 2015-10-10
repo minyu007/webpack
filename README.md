@@ -1,9 +1,9 @@
 # Handl-web
 
-### 必须软件
+### 环境搭建
 
 - Node.js：v4.0+
-
+- Sass & Compass(可选，如果不需要compass雪碧可以不安装sass与compass)
 
 ### 安装
 
@@ -15,14 +15,21 @@ $ web && npm install
 
 ### 开发环境
 
-- 启动服务
+- 开发
 
     ``` bash
     $ npm run start
     ```
     浏览器打开`http://localhost:3000/a.html`
 
-- 编译
+- compass雪碧
+
+    ``` bash
+    $ compass watch
+    ```
+    在src/img/icons下添加图标后，会自动生成css/sprites－icons.css与img/sprites-icons.png
+
+- 打包
 
     ``` bash
     $ npm run build

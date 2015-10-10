@@ -1,7 +1,9 @@
 .page-a {
-  color: red;
+  	color: red;
 }
 
 .webpack {
-  background: url(../img/webpack.png) no-repeat center;
+	width: 497px;
+	height: 270px;
+ 	background: url(../img/webpack.png) no-repeat center;
 }
