@@ -4,7 +4,7 @@
 
 - Node.js：v4.0+
 
-- Sass & Compass(可选，如果不需要compass雪碧可以不安装sass与compass)
+- Sass & Compass (可选，如果不需要compass雪碧可以不安装sass与compass)
 
 ### 安装
 
@@ -37,7 +37,7 @@ $ cd web && npm install
     ```
     将来build文件夹直接部署到apache
 
-### 说明
+### 架构说明
 
     - 如果3000端口被占用，请到app.js中修改。
 
@@ -55,6 +55,7 @@ $ cd web && npm install
 - web/
   - src/                   # 开发目录
     + css/                 # css
+    + scss/                # sass雪碧
     + img/                 # 图片
     + js/                  # js&jsx
     a.html                 # page a
