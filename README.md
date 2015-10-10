@@ -30,7 +30,7 @@ $ cd web && npm install
     ```
     在src/img/icons下添加图标后，会自动生成css/sprites－icons.css与img/sprites-icons.png
 
-- 打包
+### 打包部署
 
     ``` bash
     $ npm run build
