@@ -32,7 +32,7 @@ $ cd web && npm install
 
 ### 打包部署
 
-－打包
+- 打包
 
     ``` bash
     $ npm run build
