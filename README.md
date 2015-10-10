@@ -3,6 +3,7 @@
 ### 环境搭建
 
 - Node.js：v4.0+
+
 - Sass & Compass(可选，如果不需要compass雪碧可以不安装sass与compass)
 
 ### 安装
@@ -10,7 +11,7 @@
 ``` bash
 $ npm install -g gulp webpack
 $ npm install -g node-dev
-$ web && npm install
+$ cd web && npm install
 ```
 
 ### 开发环境
@@ -39,10 +40,14 @@ $ web && npm install
 ### 说明
 
     - 如果3000端口被占用，请到app.js中修改。
-    - ajax跨域请求请到routes.js中参考line 34, 将ip改为老朱的机器或者服务器地址。
-    - build中所有静态资源将被压缩，按需合并。
+
+    - ajax跨域请求请到routes.js中参考line 34, 将ip改为所跨域服务器地址。
+
+    - build后所有静态资源(css, js, img)将被压缩，并且会动态的按需合并。
+
     - 小于10KB的图片自动转为dataUrl，节省请求次数。
-    - 开发阶段中css文件直接内嵌到head中，编译上线阶段css分离出来单独引用。
+
+    - 开发阶段中css文件直接内嵌到head中，打包后css分离出来单独引用。
 
 ##### 目录结构
 
@@ -64,5 +69,3 @@ $ web && npm install
   package.json             # 配置
   README.md                # 说明
 ```
-
-
