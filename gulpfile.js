@@ -33,7 +33,12 @@ gulp.task('pack', ['clean'], function(done) {
 gulp.task('default', ['pack'], function() {
     var replace = require('gulp-replace');
     var htmlmin = require('gulp-htmlmin');
-
+    // gulp.src(build + '/view/*.html')
+    //     .pipe(htmlmin({
+    //         collapseWhitespace: true,
+    //         removeComments: true
+    //     }))
+    //     .pipe(gulp.dest(build+ '/view/'));
     return gulp
         .src(build + '/*.html')
         .pipe(replace(/<script(.+)?data-debug([^>]+)?><\/script>/g, ''))
@@ -42,4 +47,5 @@ gulp.task('default', ['pack'], function() {
             removeComments: true
         }))
         .pipe(gulp.dest(build));
+
 });

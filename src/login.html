@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app='loginApp'>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>login</title>
+</head>
+
+<body>
+    <div class="auth-wrap" ng-class='isVisible' ng-controller='loginCtrl'>
+        <div class="auth-background" style="background-image:url('http://placehold.it/1920x1080');"></div>
+        <div class="auth-center">
+            <div class="auth-inner">
+                <div class="auth-brand">
+                    <div class="auth-brand-inner">
+                        <div class="auth-logo"></div>
+                        <div class="auth-name"></div>
+                    </div>
+                </div>
+                <form class="auth-form form">
+                    <h1>欢&nbsp;&nbsp;迎</h1>
+                    <div class="control-group">
+                        <label><span>用户名</span><span> </span></label>
+                        <input id="register-email" type="email">
+                    </div>
+                    <div class="control-group">
+                        <label><span>密&nbsp;&nbsp;&nbsp;码</span><span> </span></label>
+                        <input id="register-password" type="password">
+                        <button class="btn-forgot-password" type="button">忘记密码?</button>
+                    </div>
+                    <div class="control-group" ng-show=''>
+                        <label><span>密码</span><span> </span></label>
+                        <input id="register-password" type="password">
+                        <button class="btn-forgot-password" type="button">忘记密码?</button>
+                    </div>
+                    <button type="submit" class="btn btn-primary"><span>登&nbsp;&nbsp;陆</span></button>
+                    <footer><span> </span><a class="" href="/register">注&nbsp;册</a></footer>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script data-debug src="/__build/vendors.js"></script>
+    <script data-debug src="/__build/login.js"></script>
+</body>
+
+</html>

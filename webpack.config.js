@@ -64,9 +64,9 @@ var webpackConfig = function(options) {
 		},
 
 		module: {
-			noParse: ['jquery', 'react', 'react-dom'],
+			noParse: ['jquery'],
 			loaders: [{
-				test: /\.(jpe?g|png|gif|svg)$/i,
+				test: /\.(jpe?g|png|gif)$/i,
 				loaders: [
 					'image?{bypassOnDebug: true, progressive:true, \
                             optimizationLevel: 3, pngquant:{quality: "65-80", speed: 4}}',
@@ -74,12 +74,12 @@ var webpackConfig = function(options) {
 					'url?limit=10000&name=img/[hash:8].[name].[ext]',
 				]
 			}, {
-				test: /\.(woff|eot|ttf)$/i,
+				test: /\.(woff|eot|ttf|woff2|svg)$/i,
 				loader: 'url?limit=10000&name=fonts/[hash:8].[name].[ext]'
 			}, {
-				test: /\.js$/,
+				test: /\.jsx?$/,
 				exclude: /node_modules/,
-				loader: 'jsx'
+				loader: 'jsx?harmony'
 			}]
 		},
 
@@ -90,15 +90,16 @@ var webpackConfig = function(options) {
 				minChunks: chunks.length
 			}),
 			//page b 和 page c 公用的js将被打包位common－bc
-			new commonsChunkPlugin({
-				name: 'common-bc',
-				chunks: ['b', 'c'],
-				minChunks: 2
-			}),
-			new uglifyJsPlugin({
-	            compress: {
-	                warnings: false
-	            }
+			// new commonsChunkPlugin({
+			// 	name: 'common-bc',
+			// 	chunks: ['b', 'c'],
+			// 	minChunks: 2
+			// }),
+
+			new webpack.ProvidePlugin({
+	            $: 'jquery',
+	            jQuery: 'jquery',
+	            'window.jQuery': 'jquery'
 	        })
 		],
 
@@ -135,12 +136,20 @@ var webpackConfig = function(options) {
 
 		config.module.loaders.push(cssLoader);
 		config.module.loaders.push(sassLoader);
+
+		config.plugins.push(
+			new uglifyJsPlugin({
+	            compress: {
+	                warnings: false
+	            }
+	        })
+		);
 		config.plugins.push(
 			new extractTextPlugin('css/[contenthash:8].[name].min.css', {
 				allChunks: false
 			})
 		);
-
+		
 		var pages = fs.readdirSync(srcDir);
 
 		pages.forEach(function(filename) {
@@ -159,6 +168,26 @@ var webpackConfig = function(options) {
 				config.plugins.push(new htmlWebpackPlugin(conf));
 			}
 		});
+
+		// var views = fs.readdirSync(srcDir+'/view');
+
+		// views.forEach(function(filename) {
+		// 	console.log(filename)
+		// 	var m = filename.match(/(.+)\.html$/);
+
+		// 	if (m) {
+		// 		var conf = {
+		// 			template: path.resolve(srcDir+'/view', filename),
+		// 			filename: 'view/'+ filename
+		// 		};
+
+		// 		// if (m[1] in config.entry) {
+		// 		// 	conf.inject = 'body';
+		// 		// 	conf.chunks = ['vendors', m[1]];
+		// 		// }
+		// 		config.plugins.push(new htmlWebpackPlugin(conf));
+		// 	}
+		// });
 	}
 	return config;
 }

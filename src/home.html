@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='homeApp'>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title>page b</title>
+    <title>home</title>
 </head>
 
 <body>
-    <h1>page b</h1>
+    <div id='wrap' ng-class='isLoaded' ng-controller="homeCtrl">
+    	<navbar></navbar>
+        <div >
+        	
+        </div>
+    </div>
     <script data-debug src="/__build/vendors.js"></script>
-    <script data-debug src="/__build/common-bc.js"></script>
-    <script data-debug src="/__build/b.js"></script>
+    <script data-debug src="/__build/home.js"></script>
 </body>
 
 </html>

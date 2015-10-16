@@ -1,16 +1,8 @@
 'use strict';
 
 var res = [
-    {
-        id: 1,
-        title: 'foo',
-        content: 'content foo'
-    },
-    {
-        id: 2,
-        title: 'title bar',
-        content: 'content bar'
-    }
+    {"author": "Pete Hunt", "text": "This is one comment"},
+    {"author": "Jordan Walke", "text": "This is *another* comment"}
 ];
 
 module.exports = res;

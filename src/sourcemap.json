@@ -1,10 +1,14 @@
-{
-	"aCss": "css/a.css",
-	"bCss": "css/b.css",
-    "commonCss": "css/common.css",
-    "iconCss": "css/sprites-icons.css",
+{	
+	"bootstrapCss": "css/bootstrap.css",
+	"commonCss": "css/common.css",
+	"iconCss": "css/sprites-icons.css",
 
-    "aJs": "js/a.js",
-    "bJs": "js/b.js",
-    "cJs": "js/c.js"
+    "aCss": "css/a.css",
+    "bCss": "css/b.css",
+    
+    "bootstrap": "js/lib/bootstrap.min.js",
+
+    "nav": "js/directive/nav.js",
+    "loading": "js/directive/loading.js",
+    "animate": "js/util/animate.js"
 }

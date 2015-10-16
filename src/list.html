@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="listApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>list</title>
+</head>
+
+<body ng-controller="listCtrl">
+	<div id='wrap' ng-class='isLoaded'>
+    	<navbar></navbar>
+        <div>
+        	<ul>
+        		<li ng-repeat='course in coursesList' class="repeated-item"><a href='#' ng-click='getBook("{course.courseId}")'>{{course.courseName}}</a></li>
+        	</ul>
+            <ul>
+                <li ng-repeat='book in booksList' class="repeated-item"></li>
+            </ul>
+            <ul>
+                <li ng-repeat='book in booksList' class="repeated-item"></li>
+            </ul>
+        </div>
+    </div>
+    <script data-debug src="/__build/vendors.js"></script>
+    <script data-debug src="/__build/list.js"></script>
+</body>
+
+</html>
